@@ -1,0 +1,9 @@
+<div class="w-[100%] border-blue-200 border-2 rounded-lg p-2">
+  <div class="flex justify-center gap-2">
+    <button class="p-2 border-2 rounded-md font-semibold">Back</button>
+    <button class="p-2 border-2 rounded-md font-semibold">Next</button>
+  </div>
+  <div class="flex justify-around gap-y-8 flex-wrap my-2">
+    <img *ngFor="let image of imageList" class="w-[30%] rounded-md" src="{{image}}" alt="image" />
+  </div>
+</div>
