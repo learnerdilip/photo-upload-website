@@ -7,10 +7,12 @@ import { BASE_URL } from '../constants';
 })
 export class UploadFileComponent {
   file: File | undefined = undefined;
+  message: string = '';
 
   constructor() {}
 
   handleFileSelection(e: any) {
+    this.message = '';
     this.file = e.target.files[0];
   }
 
@@ -26,6 +28,9 @@ export class UploadFileComponent {
       .then((response) => response.json())
       .then((data) => {
         this.file = undefined;
+        this.message = 'Upload successful!!';
+
+        (document.getElementById('file') as HTMLInputElement).value = '';
       })
       .catch((error) => console.error(error));
   }

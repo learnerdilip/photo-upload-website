@@ -3,6 +3,7 @@
     <label for="avatar">Choose a picture to upload</label> <br>
     <input type="file" id="file" name="file" (change)="handleFileSelection($event)" accept="image/png, image/jpeg" />
     <button class="px-2 py-1 border-2 rounded-lg bg-slate-700 text-white" (click)="handleFileUpload()">Upload</button>
+    <p>{{message}}</p>
   </div>
 </div>
 
