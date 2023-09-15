@@ -6,4 +6,25 @@
   <div class="flex justify-around gap-y-8 flex-wrap my-2">
     <img (click)="handleImageClick(image)" *ngFor="let image of imageList" class="w-[30%] rounded-md" src="{{image.fileUrl}}" alt="image" />
   </div>
+
+  <dialog id="imageDetail" class="w-[100%] h-full">
+    <div class="flex w-full h-full">
+      <div class="w-[70%] p-3 flex justify-center">
+        <img src="{{selectedImage?.fileUrl}}" alt="your uploaded image" />
+      </div>
+      <div class="flex flex-col bg-blue-200 justify-center right-10 top-10 p-3 w-[30%] border-l-blue-200 border-l-2">
+        <h4 class="text-lg font-bold">Image properties</h4>
+        <hr>
+        <p><b>fieldname:</b>  {{selectedImage?.fieldname}}</p>
+        <p><b>originalname:</b>  {{selectedImage?.originalname}}</p>
+        <p><b>encoding:</b>  {{selectedImage?.encoding}}</p>
+        <p><b>mimetype:</b>  {{selectedImage?.mimetype}}</p>
+        <p><b>size:</b>  {{selectedImage?.size}} bytes</p>
+        <br>
+        <br>
+        <i>NOTE: Press 'escape' to exit the view</i>
+      </div>
+    </div>
+  </dialog>
+
 </div>

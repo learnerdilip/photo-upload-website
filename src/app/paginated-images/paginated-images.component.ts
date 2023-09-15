@@ -11,6 +11,7 @@ export class PaginatedImagesComponent {
   imageList: ImageItem[] = [];
   currentPage: number = 0;
   lastPage: boolean = false;
+  selectedImage: ImageItem | undefined = undefined;
 
   constructor() {
     this.fetchImages();
@@ -40,6 +41,8 @@ export class PaginatedImagesComponent {
   }
 
   handleImageClick(image: ImageItem) {
-    console.log('image clicked!: ', image);
+    this.selectedImage = image;
+    const modal: any = document.getElementById('imageDetail');
+    modal.showModal();
   }
 }
