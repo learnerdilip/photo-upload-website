@@ -20,7 +20,7 @@ jobs:
 
       - name: Update Another Repository
         run: |
-          git clone https://github.com/learnerdilip/photo-upload-website
+          git clone https://${GH_TOKEN}@github.com/learnerdilip/photo-upload-website
           cd photo-upload-website
           npm install
           npm run build
