@@ -27,7 +27,7 @@ jobs:
           cp -r dist ../dist-temp
           
           cd ..
-          git clone https://github.com/learnerdilip/test
+          git clone https://github.com/learnerdilip/test.git
           cd test
           cp -r ../dist-temp/* ./copied-webapp
           echo "Updated at $(date)" >> update.txt
