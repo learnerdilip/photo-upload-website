@@ -1,0 +1,38 @@
+name: Update Another Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Git
+        run: |
+          git config --global user.name 'Dilip'
+          git config --global user.email 'diliptalks@gmail.com'
+
+      - name: Update Another Repository
+        run: |
+          git clone https://github.com/learnerdilip/photo-upload-website
+          cd photo-upload-website
+          npm install
+          npm run build
+          cp -r dist ../dist-temp
+          
+          cd ..
+          git clone https://github.com/learnerdilip/test
+          cd test
+          cp -r ../dist-temp/* .
+          echo "Updated at $(date)" >> update.txt
+          git add .
+          git commit -m "Update from original repository"
+          git push
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
