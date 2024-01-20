@@ -1,0 +1,38 @@
+name: Update Another Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-another-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          repository: learnerdilip/photo-upload-website
+
+      - name: Build and Copy
+        run: |
+          npm install
+          npm run build
+          cp -r dist ../dist-temp
+
+      - name: Checkout Another Repository
+        uses: actions/checkout@v4
+        with:
+          repository: learnerdilip/test
+          token: ${{ ${{ secrets.GH_TOKEN }} }}
+          path: test
+
+      - name: Update Another Repository
+        run: |
+          cp -r ../dist-temp/* ./test/copied-webapp
+          echo "Updated at $(date)" >> ./test/update.txt
+          cd test
+          git add .
+          git commit -m "Update from original repository"
+          git push
