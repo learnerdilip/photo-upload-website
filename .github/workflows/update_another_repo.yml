@@ -31,6 +31,11 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           path: test
 
+      - name: Set Git User
+        run: |
+          git config --global user.email "diliptalks@gmail.com"
+          git config --global user.name "Dilip Singh"
+
       - name: Update Another Repository
         run: |
           cp -r ../dist-temp/* ./test/copied-webapp
