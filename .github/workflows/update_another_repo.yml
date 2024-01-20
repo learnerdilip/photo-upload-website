@@ -19,6 +19,9 @@ jobs:
         run: |
           npm install
           npm run build
+
+      - name: Copy to Another Directory
+        run: |
           cp -r dist ../dist-temp
 
       - name: Checkout Another Repository
